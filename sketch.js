@@ -26,6 +26,12 @@ function preload(){
     stoneImg=loadImage("stone.png")
     starImg=loadImage("star.png")
 
+    uaImg=loadImage("UA.png")
+    daImg=loadImage("DA.png")
+    raImg=loadImage("RA.png")
+    laImg=loadImage("LA.png")
+    fbImg=loadImage("FB.png")
+
     fj1Img=loadImage("fjs.png")
     fj2Img=loadImage("fjs.png")
     fj3Img=loadImage("fjs.png")
@@ -116,6 +122,27 @@ function setup(){
     play=createSprite(450,200)
     play.addImage(playImg)
     play.visible=false
+
+    ua=createSprite(100,450)
+    ua.addImage(uaImg)
+    ua.scale=0.5
+
+    da=createSprite(100,550)
+    da.addImage(daImg)
+    da.scale=0.5
+
+    la=createSprite(60,500)
+    la.addImage(laImg)
+    la.scale=0.5
+
+    ra=createSprite(140,500)
+    ra.addImage(raImg)
+    ra.scale=0.5
+
+    fb=createSprite(850,500)
+    fb.addImage(fbImg)
+    fb.scale=0.5
+
            } 
   
    function draw(){
@@ -125,35 +152,30 @@ function setup(){
  background.y=background.height/2
     } 
    
-    if(keyDown('UP')){
+    if(mousePressedOver(ua)){
 
-   fighterjet.y=fighterjet.y-=4
-   fighterjetblast.y=fighterjetblast.y-4} 
-
-if(keyDown('DOWN')){
-   fighterjet.y=fighterjet.y+=4
-   fighterjetblast.y=fighterjetblast.y+=4}
-
-if(keyDown('Left')){
-   fighterjet.x=fighterjet.x-=4
-  fighterjetblast.x=fighterjetblast.x-=4}
-
-if(keyDown('Right')){
-  fighterjet.x=fighterjet.x+=4
-   fighterjetblast.x=fighterjetblast.x+=4}
-
-      play.visible=true
-
-    if(gamestate=="play"){     
-      play.visible=false
-
-    if(keyWentDown('space')){
-        bullet=createSprite(fighterjet.x-1,fighterjet.y-65,7,5)
-        bullet.velocityY=-10
-        bulletGroup.add(bullet)
-        bullet.addImage(gunfireImg)
-        bullet.scale=0.5
-        bulletSound.play() }   
+        fighterjet.y-=4
+        fighterjetblast.y-4} 
+    
+    if(mousePressedOver(da)){
+        fighterjet.y+=4
+        fighterjetblast.y+=4}
+    
+    if(mousePressedOver(la)){
+        fighterjet.x-=4
+        fighterjetblast.x-=4}
+    
+    if(mousePressedOver(ra)){
+        fighterjet.x+=4
+        fighterjetblast.x+=4}
+    
+        if(mousePressedOver(fb)){
+            bullet=createSprite(fighterjet.x-1,fighterjet.y-65,7,5)
+            bullet.velocityY=-10
+            bulletGroup.add(bullet)
+            bullet.addImage(gunfireImg)
+            bullet.scale=0.5
+            bulletSound.play() }     
         
         if(stoneGroup.isTouching(fighterjet)){
             for(i=0;i<stoneGroup.length;i++){
@@ -236,13 +258,9 @@ if(keyDown('Right')){
                             fj4.visible=false
                             fj5.visible=false
                          }
-                                  }
+                                  
                             
-                        if(keyWentDown("P")){
-                          
-                         gamestate="play"
-                         play.visible=false
-                         }
+                       
                         
                     if (keyWentDown("R")){
                         reset()
